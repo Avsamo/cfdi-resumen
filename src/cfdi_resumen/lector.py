@@ -31,13 +31,10 @@ def leer_cfdi(ruta):
                     value = temp_dict[main_key][sub_key]
                 final_dict[string] = value
 
-    return final_dict    
+    for value in final_dict:
+        print(value+":",final_dict[value])
+
+    return final_dict
     
-ruta = os.path.join(base_dir,"datos/ejemplos/factura_001.xml")
-result = leer_cfdi(ruta)
-for value in result:
-    print(value+":",result[value])
-
-
 
 
