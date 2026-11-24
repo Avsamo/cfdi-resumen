@@ -38,15 +38,16 @@ def procesar_carpeta(carpeta,nombre_archivo_salida):
     all_dicts_df = pd.DataFrame.from_dict(all_dicts, orient='index')
     emisores_totales_df = pd.DataFrame.from_dict(emisores_totales, orient='index')
 
-    with pd.ExcelWriter(os.path.join(base_dir, nombre_archivo_salida)) as writer:
-        all_dicts_df.to_excel(writer, sheet_name='Facturas', index=True)
-        emisores_totales_df.to_excel(writer, sheet_name='Emisores', index=True)
+    if nombre_archivo_salida != "":
+        with pd.ExcelWriter(os.path.join(base_dir, nombre_archivo_salida)) as writer:
+            all_dicts_df.to_excel(writer, sheet_name='Facturas', index=True)
+            emisores_totales_df.to_excel(writer, sheet_name='Emisores', index=True)
 
 
 def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("--ruta", default=Path("datos"),type=Path)
-    parser.add_argument("--salida", default=Path("salidas/resumen.xlsx"), type=Path)
+    parser.add_argument("--salida", default="")
     args = parser.parse_args()
     ruta_carpeta = ""
     if args.ruta:

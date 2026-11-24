@@ -2,8 +2,6 @@
 
 Herramienta de línea de comandos que lee archivos **CFDI (Comprobantes Fiscales Digitales por Internet)**, es decir, facturas electrónicas en formato XML, y muestra de forma clara los datos de cada factura. Su objetivo es consultar rápidamente la información de cada comprobante sin tener que abrir y revisar cada XML a mano.
 
-> **Nota:** esta herramienta no calcula el total acumulado de todas las facturas; muestra los datos de cada factura de forma individual.
-
 ## Requisitos
 
 - Python 3.10 o superior
@@ -29,3 +27,14 @@ uv run cfdi-resumen
 ```
 
 El programa leerá automáticamente todos los XML de la carpeta `datos/` y mostrará los datos de cada factura.
+
+con la nueva implementacion de excel y argumentos de linea de comandos, se incluyen --ruta (la cual te permite seleccionar la carpeta de donde quieres extraer nuevos datos dentro de cfdi-resumen) y --salida (la cual permite seleccionar una ruta para generar un xlsx con la informacion extraida de los documentos)
+
+algunos ejemplos son:
+
+```bash
+uv run cfdi-resumen --ruta datos
+uv run cfdi-resumen --ruta ejemplos --salida salida/resumen.xlsx
+```
+
+donde la carpeta "salida" fue creada anteriormente
